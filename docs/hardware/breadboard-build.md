@@ -7,6 +7,11 @@ plugs in. The picture to follow is **[`hardware/breadboard-layout.svg`](../../ha
 Same circuit as the [rewiring guide](rewiring-guide.md) (schematic: [`hardware/schematic.svg`](../../hardware/schematic.svg)),
 laid out for a breadboard, plus a light on every channel so you can *see* each relay turn on.
 
+![Our finished relay board: T-type GPIO board on the left, ten relays with resistors and red LEDs, rainbow ribbon to the treadmill](../../hardware/photos/relay-board.jpeg)
+
+*Our finished board. We used whatever jumper colors we had, so the wire colors differ from the picture: follow the
+picture's rows and columns, not the photo's colors.*
+
 When you get to the parts that need the Pi's software, set up the Pi with **[setup-pi.md](../setup-pi.md)**.
 
 > 🧑 **Grown-up steps** are marked 🧑. Everything else is fine for kids, because the breadboard only ever sees
@@ -61,6 +66,10 @@ Solder the 2×20 header onto the Pi Zero (long pins up). That's the only solderi
 ### Step 2: Cobbler
 Plug the T-Cobbler into **rows 1–20**, straddling the canyon. Connect the ribbon to it, but **don't plug the Pi in yet**.
 Add one ⚫ black wire from **GND (row 20, pin 39)** to the **− rail**.
+
+> Any 40-pin T-type GPIO board works: the Adafruit T-Cobbler Plus, or a generic one like the red "GPIO Extension
+> Board" in our photo. Different boards print their pins in different orders, so **wire by the labels printed on
+> your board** (GPIO17, GPIO27, …, GND), not by the row numbers in the table below.
 
 ### Step 3: Relays, one channel at a time
 Each channel uses 4 rows. Channel *n* starts at row **R = 23 + 4 × (n − 1)**:
@@ -157,12 +166,18 @@ Treadmill **unplugged from the wall**, console board out if you can get it out.
 5. **Fit the header** (short side through the board, long pins up). Solder one end pin, check it's square, then solder the rest.
 6. **Look for solder bridges** under good light. Then put a dot next to pin 1 on the board again.
 
+| Before: the melted socket with the old switch-box wires | After: the new header with the rainbow plug |
+|---|---|
+| ![Melted HD6 socket with red, black and blue wires](../../hardware/photos/hd6-before.jpeg) | ![New 1×10 header on HD6 with the rainbow ribbon plug](../../hardware/photos/hd6-header.jpeg) |
+
 This replaces the old switch box: its wires came off with the socket.
 
 ### Step 7: Plug in the treadmill (kid job)
 1. **Make the plug:** pull the 10 female ends out of their single housings (lift the little plastic tab) and push them, in order, into a **1×10 Dupont housing**. Put a dot on the housing at wire 1.
 2. **Push the plug onto the HD6 header, dot to dot.**
 3. Plug the 10 **male** ends into the breadboard: wire *n* goes in **i R** of channel *n* (i23, i27, i31 … i59).
+
+![The rainbow plug on the HD6 header: black wire at pin 1 on the left, brown at pin 10 on the right](../../hardware/photos/hd6-plug.jpeg)
 
 > ⚠️ Go by position, not by matching colors to old notes. On this ribbon, **black is pin 1** (at the dot) and the rest
 > follow rainbow order to **brown at pin 10** ([button-map.md](button-map.md)). Its *red* is pin 9 and its *blue* is pin 5,

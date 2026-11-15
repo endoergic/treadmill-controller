@@ -94,7 +94,7 @@ circuit itself needs:
 | 10 | **PhotoMOS relay, DIP-4**: Panasonic **AQY212EH** | 60 V / ~500 mA, LED trigger ≤ 3 mA. Toshiba TLP222A is end-of-life; TLP240A works as an alternative. |
 | 10 | 330 Ω resistor | Relay LED current ≈ (3.3 − 1.3) / 330 ≈ **6 mA**, 2× trigger margin |
 | 10 | 1 kΩ resistor + red LED | Indicator per channel, ~1.5 mA. Optional for the circuit, very useful for testing |
-| 1 | Full-size 830-point breadboard + Adafruit T-Cobbler Plus #2028 | The v1.0 build. A soldered version is suggested, not built ([§10](#10-power--mounting)) |
+| 1 | Full-size 830-point breadboard + 40-pin T-type GPIO breakout (Adafruit T-Cobbler Plus #2028 or a generic "GPIO Extension Board"; the tested build used a generic one) | The v1.0 build. Wire by the breakout's printed labels. A soldered version is suggested, not built ([§10](#10-power--mounting)) |
 | 1 | 2.54 mm 1×10 male header + 1×10 Dupont housing + 10 female→male Dupont wires | Replaces the original HD6 socket ([§6](#6-connect-to-hd6)) |
 | 1 | **Separate** 5 V 2.5 A micro-USB supply for the Pi | Don't power the Pi from the treadmill |
 

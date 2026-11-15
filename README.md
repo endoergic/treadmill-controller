@@ -6,9 +6,10 @@ instead of replacing the console, ten PhotoMOS relays are wired to the console's
 the Pi closes them in the same combinations the buttons would. The Pi has no electrical connection to the
 treadmill, and the treadmill's own safety key still works as before.
 
-![The console's keypad connector HD6, replaced with a 1×10 header and a rainbow ribbon plug](hardware/photos/IMG_2390.jpeg)
+![The console's circuit board with the rainbow ribbon plugged into HD6 and the relay breadboard next to it](hardware/photos/console-overview.jpeg)
 
-*The console's keypad connector (HD6), with the half‑melted socket replaced by a 1×10 header and a rainbow ribbon plug.*
+*The console board (back side) with the rainbow ribbon plugged into the keypad connector HD6, and the relay
+breadboard on the left. More photos: [Photos](#photos).*
 
 > [!WARNING]
 > **Safety. Read this before you open anything.**
@@ -79,7 +80,8 @@ Details: [docs/architecture.md](docs/architecture.md) (software) and
 ## What you need
 
 A Raspberry Pi Zero W (with header), 10 Panasonic AQY212EH PhotoMOS relays, resistors, LEDs, a full‑size breadboard,
-an Adafruit T‑Cobbler Plus, jumper wires, a 1×10 header and Dupont housing, and a multimeter. Full list:
+a 40‑pin T‑type GPIO breakout (Adafruit T‑Cobbler Plus or a generic "GPIO Extension Board"), jumper wires, a 1×10
+header and Dupont housing, and a multimeter. Full list:
 [docs/hardware/shopping-list.md](docs/hardware/shopping-list.md)
 (printable: [hardware/shopping-list.html](hardware/shopping-list.html)).
 
@@ -111,6 +113,15 @@ Do these in order:
 | [docs/charter.md](docs/charter.md) | Goals, scope, constraints, risks |
 | [docs/tech-stack.md](docs/tech-stack.md) | Stack choices for the Pi Zero W and why |
 | [hardware/schematics/](hardware/schematics/README.md) | Hand‑drawn switch wiring and the factory diagram |
+
+## Photos
+
+| | |
+|---|---|
+| ![Solaris console with the 1StepSpeed presets, Start/Stop, incline and speed keys](hardware/photos/console.jpeg) | ![The relay breadboard: GPIO breakout, ten relays, resistors and red indicator LEDs](hardware/photos/relay-board.jpeg) |
+| The Solaris console the app drives | The relay board (wire colors differ from the layout picture; follow the picture) |
+| ![HD6 before: half-melted socket with the old switch-box wires](hardware/photos/hd6-before.jpeg) | ![HD6 after: 1×10 header with the rainbow ribbon plug](hardware/photos/hd6-header.jpeg) |
+| HD6 before: the half‑melted socket | HD6 after: new header and rainbow plug (black = pin 1) |
 
 ## Repository layout
 

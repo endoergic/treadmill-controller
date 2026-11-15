@@ -12,7 +12,7 @@ Everything for the v1.0 build: the 10-relay breadboard from [breadboard-build.md
 | ✓ | Qty | Item | Part # / example | ≈ Price |
 |---|-----|------|------------------|---------|
 | ☐ | 12 | PhotoMOS relay, DIP-4 (10 + 2 spares) | **Panasonic AQY212EH** (alt: Toshiba TLP240A). *Not* TLP222A, which is end-of-life. | $20 |
-| ☐ | 1 | T-Cobbler Plus with ribbon cable | Adafruit **#2028** | $8 |
+| ☐ | 1 | 40-pin T-type GPIO breakout with ribbon cable | Adafruit T-Cobbler Plus **#2028**, or any generic "GPIO Extension Board" T-board (our build used a generic one; wire by its printed labels) | $5–8 |
 | ☐ | 1 | Full-size breadboard, 830 points, **63 rows** | BusBoard BB830 or Adafruit full-size | $6–9 |
 | ☐ | 1 | 2×20 male header, 2.54 mm, for the Pi Zero | any (no-solder alt: GPIO "hammer header" kit) | $1–6 |
 | ☐ | 15 | 330 Ω resistor, ¼ W (orange-orange-brown) | Stackpole CF14JT330R | $1 |
