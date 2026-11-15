@@ -1,0 +1,67 @@
+# Treadmill controller config. Copy to config/treadmill.toml on the Pi and edit; the app falls back to this file
+# when treadmill.toml doesn't exist. GPIO numbers are BCM numbering.
+
+[server]
+host = "0.0.0.0"
+port = 80
+pin = ""                 # optional household PIN; empty = no PIN
+
+[hd6]
+# The console's 10-pin keypad connector. Each PhotoMOS relay joins one HD6 pin to the board's shared line, so the
+# Pi has no electrical connection to the treadmill and an unpowered Pi presses nothing.
+ground = [1, 10]         # console ground pins (Go side, 0 V to each other); never used as select lines
+
+# HD6 keypad connector pin -> BCM GPIO. Ribbon colors (confirmed, see docs/hardware/button-map.md).
+[hd6.gpio]
+1 = 17   # black   (ground)
+2 = 27   # white
+3 = 22   # grey
+4 = 23   # purple
+5 = 24   # blue
+6 = 25   # green
+7 = 16   # yellow
+8 = 26   # orange
+9 = 12   # red
+10 = 13  # brown   (ground)
+
+[timing]
+settle_ms = 50           # select relays closed -> wait -> Go
+press_ms = 300           # Go held for a single tap; keep well under ~1000 (console auto-repeats after ~1 s)
+max_press_ms = 5000      # Go is never held longer than this (limit for manual presses from the troubleshooting panel)
+gap_ms = 200             # pause between consecutive commands
+max_relays_on = 5        # GPIO current budget (~6 mA per relay)
+
+[safety]
+max_speed = 6.0          # app limit (the console itself goes to 10 mph): taps and presets above it are refused
+max_commands_per_sec = 3
+
+[speed]
+unit = "mph"
+step = 0.1               # per single tap
+start_speed = 1.0        # speed after the first speed_up from stopped (measured 2026-11-14)
+
+# Commands (from the probe scan, docs/hardware/button-map.md): close the `select` relays, wait settle_ms,
+# pulse `go` for press_ms, release all.
+# sets_speed: a preset; the app's speed estimate jumps to it (and it's refused above max_speed).
+# The phone UI has places for these names; any other command shows up as an extra button.
+[commands]
+speed_up     = { select = [2, 7], go = 1 }   # also starts the belt, at start_speed
+speed_down   = { select = [3, 6], go = 1 }
+start        = { select = [3, 7], go = 1 }   # starts at start_speed; error beep while running
+stop         = { select = [4, 6], go = 1 }
+incline_up   = { select = [4, 7], go = 1 }
+incline_down = { select = [5, 6], go = 1 }
+speed_1      = { select = [3, 9], go = 1, sets_speed = 1.0 }
+speed_2      = { select = [2, 9], go = 1, sets_speed = 2.0 }
+speed_3      = { select = [7, 8], go = 1, sets_speed = 3.0 }
+speed_4      = { select = [6, 8], go = 1, sets_speed = 4.0 }
+speed_5      = { select = [5, 8], go = 1, sets_speed = 5.0 }
+speed_6      = { select = [4, 8], go = 1, sets_speed = 6.0 }
+speed_7      = { select = [3, 8], go = 1, sets_speed = 7.0 }
+speed_8      = { select = [2, 8], go = 1, sets_speed = 8.0 }
+speed_9      = { select = [6, 7], go = 1, sets_speed = 9.0 }
+speed_10     = { select = [5, 7], go = 1, sets_speed = 10.0 }
+fan          = { select = [8, 9], go = 1 }
+programs     = { select = [6, 9], go = 1 }
+odometer     = { select = [7, 9], go = 1 }
+# Not confirmed (error beep in every state; likely Heart Rate ▲▼, needs a sensor): 4+9, 5+9

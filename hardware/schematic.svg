@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1544" width="1200" height="1544" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<title>Treadmill controller v1.0 — relay board schematic</title>
+<style>.w{stroke:#000;stroke-width:2;fill:none}.t{fill:#000}.s{font-size:12px}.h{font-size:16px;font-weight:bold}.b{font-weight:bold}.m{fill:#444;font-size:12px}.bar{stroke:#000;stroke-width:1.5;stroke-dasharray:8 6;fill:none}.box{stroke:#000;stroke-width:2;fill:#fff}.dot{fill:#000}</style>
+<rect x="0" y="0" width="1200" height="1544" fill="#ffffff"/>
+<text x="40" y="44" style="font-size:22px;font-weight:bold">Treadmill controller v1.0 — relay board</text>
+<text x="40" y="68" class="m">10 × Panasonic AQY212EH PhotoMOS relays between a Raspberry Pi Zero W and the console keypad connector HD6. Tested on a NordicTrack C2100 (NTL1085).</text>
+<text x="40" y="108" class="h">(a) One channel in detail (×10)</text>
+<text x="250" y="140" class="b">Pi side (3.3 V)</text>
+<text x="900" y="140" class="b">Treadmill side</text>
+<rect x="40" y="150" width="160" height="280" class="box"/>
+<text x="120" y="290" text-anchor="middle" class="b">Raspberry Pi</text><text x="120" y="308" text-anchor="middle" class="b">Zero W</text>
+<text x="192" y="185" text-anchor="end">GPIOxx</text>
+<text x="192" y="405" text-anchor="end">GND</text>
+<path class="w" d="M200 180 H300"/><circle class="dot" cx="300" cy="180" r="4"/>
+<path class="w" d="M300 180 H340"/><rect x="340" y="170" width="80" height="20" class="box"/><path class="w" d="M420 180 H560"/>
+<text x="380" y="162" text-anchor="middle">330 Ω</text>
+<text x="490" y="172" text-anchor="middle" class="s">pin 1 (anode, dot)</text>
+<path class="w" d="M300 180 V220"/><rect x="290" y="220" width="20" height="60" class="box"/><path class="w" d="M300 280 V305"/>
+<text x="318" y="255" class="t">1 kΩ</text>
+<path class="w" d="M286 305 H314 L300 330 Z M286 330 H314"/><path class="w" d="M300 330 V400"/>
+<path class="w" d="M318 312 l14 -8 M326 302 l6 2 l-2 6 M318 324 l14 -8 M326 314 l6 2 l-2 6"/>
+<text x="342" y="332" class="s">red indicator LED</text>
+<text x="342" y="348" class="m">own path, not via relay</text>
+<path class="w" d="M200 400 H470"/><circle class="dot" cx="300" cy="400" r="4"/>
+<path class="w" d="M470 400 V300 H560"/>
+<text x="474" y="292" class="s">pin 2 (cathode)</text>
+<rect x="560" y="150" width="200" height="180" class="box"/>
+<circle class="dot" cx="572" cy="162" r="4"/>
+<text x="650" y="352" text-anchor="end" class="b">AQY212EH (DIP-4)</text>
+<text x="566" y="176" class="s">1</text><text x="566" y="296" class="s">2</text><text x="746" y="296" class="s">3</text><text x="746" y="176" class="s">4</text>
+<path class="w" d="M560 180 H610 V215"/><path class="w" d="M596 215 H624 L610 240 Z M596 240 H624"/><path class="w" d="M610 240 V300 H560"/>
+<path class="w" d="M628 222 l18 -8 M640 211 l6 3 l-3 6 M628 236 l18 -8 M640 225 l6 3 l-3 6"/>
+<path class="w" d="M760 180 H712 V210"/><circle class="dot" cx="712" cy="210" r="3"/><path class="w" d="M712 270 L692 216"/><circle class="dot" cx="712" cy="270" r="3"/><path class="w" d="M712 270 V300 H760"/>
+<text x="700" y="250" text-anchor="end" class="s">switch</text>
+<path class="bar" d="M660 120 V440"/><text x="660" y="115" text-anchor="middle" class="s">isolation barrier (no electrical connection)</text>
+<path class="w" d="M760 180 H1000"/>
+<text x="880" y="172" text-anchor="middle" class="s">pin 4 → ribbon wire n</text>
+<rect x="1000" y="160" width="160" height="40" class="box"/><text x="1080" y="185" text-anchor="middle" class="b">HD6 pin n</text>
+<text x="1000" y="220" class="m">console keypad line</text><text x="1000" y="236" class="m">(pins 2–9 idle at +3.4 V;</text><text x="1000" y="252" class="m">pins 1 and 10 = console GND)</text>
+<path class="w" d="M760 300 H860 V400"/><circle class="dot" cx="860" cy="400" r="4"/><path class="w" stroke-width="3" d="M800 400 H1160" style="stroke-width:4"/>
+<text x="790" y="292" class="s">pin 3</text>
+<text x="880" y="390" class="b">SHARED line (S rail)</text>
+<text x="880" y="422" class="m">pin 3 of all 10 relays; stays on the board,</text><text x="880" y="438" class="m">never wired to the treadmill</text>
+<text x="40" y="470" class="m">Relay LED ≈ (3.3 V − 1.3 V) / 330 Ω ≈ 6 mA (trigger ≤ 3 mA) · indicator ≈ 1.5 mA · max 5 relays on at once (max_relays_on).</text>
+<text x="40" y="488" class="m">No 10 kΩ pull-downs: these GPIOs default to pull-down at boot, so all relays start open (fail open). Pi GND never touches the treadmill.</text>
+<path d="M40 515 H1160" stroke="#000" stroke-width="1"/>
+<text x="40" y="550" class="h">(b) Board overview: 10 channels</text>
+<text x="40" y="572" class="m">Each box is one channel as in (a): 330 Ω + relay LED, 1 kΩ + indicator LED, returns to Pi GND (pin 39). Ribbon colors: pin 1 black … pin 10 brown.</text>
+<rect x="40" y="582" width="190" height="738" class="box"/>
+<text x="135" y="601" text-anchor="middle" class="b">Raspberry Pi Zero W</text>
+<text x="135" y="1305" text-anchor="middle" class="s">GND: pin 39</text>
+<rect x="1000" y="590" width="60" height="690" class="box"/>
+<text x="1030" y="584" text-anchor="middle" class="b">HD6</text>
+<text x="222" y="625" text-anchor="end">GPIO17 · pin 11</text>
+<path class="w" d="M230 620 H330"/>
+<rect x="330" y="598" width="370" height="44" class="box"/>
+<text x="346" y="625" class="b">ch 1 · GPIO 17 · HD6 pin 1 · black · Go</text>
+<circle cx="680" cy="620" r="7" fill="#000000" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="607" class="s">4</text><text x="704" y="643" class="s">3</text>
+<path class="w" d="M700 630 H790"/><circle class="dot" cx="790" cy="630" r="4"/>
+<path class="w" d="M700 610 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="610" r="5" class="box"/>
+<text x="1056" y="615" text-anchor="end" class="s">1</text>
+<text x="1070" y="615" class="b">GND (console)</text>
+<text x="222" y="695" text-anchor="end">GPIO27 · pin 13</text>
+<path class="w" d="M230 690 H330"/>
+<rect x="330" y="668" width="370" height="44" class="box"/>
+<text x="346" y="695" class="b">ch 2 · GPIO 27 · HD6 pin 2 · white</text>
+<circle cx="680" cy="690" r="7" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="677" class="s">4</text><text x="704" y="713" class="s">3</text>
+<path class="w" d="M700 700 H790"/><circle class="dot" cx="790" cy="700" r="4"/>
+<path class="w" d="M700 680 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="680" r="5" class="box"/>
+<text x="1056" y="685" text-anchor="end" class="s">2</text>
+<text x="1070" y="685" class="m">line, 3.4 V</text>
+<text x="222" y="765" text-anchor="end">GPIO22 · pin 15</text>
+<path class="w" d="M230 760 H330"/>
+<rect x="330" y="738" width="370" height="44" class="box"/>
+<text x="346" y="765" class="b">ch 3 · GPIO 22 · HD6 pin 3 · grey</text>
+<circle cx="680" cy="760" r="7" fill="#9e9e9e" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="747" class="s">4</text><text x="704" y="783" class="s">3</text>
+<path class="w" d="M700 770 H790"/><circle class="dot" cx="790" cy="770" r="4"/>
+<path class="w" d="M700 750 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="750" r="5" class="box"/>
+<text x="1056" y="755" text-anchor="end" class="s">3</text>
+<text x="1070" y="755" class="m">line, 3.4 V</text>
+<text x="222" y="835" text-anchor="end">GPIO23 · pin 16</text>
+<path class="w" d="M230 830 H330"/>
+<rect x="330" y="808" width="370" height="44" class="box"/>
+<text x="346" y="835" class="b">ch 4 · GPIO 23 · HD6 pin 4 · purple</text>
+<circle cx="680" cy="830" r="7" fill="#7b3fa0" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="817" class="s">4</text><text x="704" y="853" class="s">3</text>
+<path class="w" d="M700 840 H790"/><circle class="dot" cx="790" cy="840" r="4"/>
+<path class="w" d="M700 820 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="820" r="5" class="box"/>
+<text x="1056" y="825" text-anchor="end" class="s">4</text>
+<text x="1070" y="825" class="m">line, 3.4 V</text>
+<text x="222" y="905" text-anchor="end">GPIO24 · pin 18</text>
+<path class="w" d="M230 900 H330"/>
+<rect x="330" y="878" width="370" height="44" class="box"/>
+<text x="346" y="905" class="b">ch 5 · GPIO 24 · HD6 pin 5 · blue</text>
+<circle cx="680" cy="900" r="7" fill="#1e63c8" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="887" class="s">4</text><text x="704" y="923" class="s">3</text>
+<path class="w" d="M700 910 H790"/><circle class="dot" cx="790" cy="910" r="4"/>
+<path class="w" d="M700 890 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="890" r="5" class="box"/>
+<text x="1056" y="895" text-anchor="end" class="s">5</text>
+<text x="1070" y="895" class="m">line, 3.4 V</text>
+<text x="222" y="975" text-anchor="end">GPIO25 · pin 22</text>
+<path class="w" d="M230 970 H330"/>
+<rect x="330" y="948" width="370" height="44" class="box"/>
+<text x="346" y="975" class="b">ch 6 · GPIO 25 · HD6 pin 6 · green</text>
+<circle cx="680" cy="970" r="7" fill="#2e9e3e" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="957" class="s">4</text><text x="704" y="993" class="s">3</text>
+<path class="w" d="M700 980 H790"/><circle class="dot" cx="790" cy="980" r="4"/>
+<path class="w" d="M700 960 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="960" r="5" class="box"/>
+<text x="1056" y="965" text-anchor="end" class="s">6</text>
+<text x="1070" y="965" class="m">line, 3.4 V</text>
+<text x="222" y="1045" text-anchor="end">GPIO16 · pin 36</text>
+<path class="w" d="M230 1040 H330"/>
+<rect x="330" y="1018" width="370" height="44" class="box"/>
+<text x="346" y="1045" class="b">ch 7 · GPIO 16 · HD6 pin 7 · yellow</text>
+<circle cx="680" cy="1040" r="7" fill="#f2d21b" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="1027" class="s">4</text><text x="704" y="1063" class="s">3</text>
+<path class="w" d="M700 1050 H790"/><circle class="dot" cx="790" cy="1050" r="4"/>
+<path class="w" d="M700 1030 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="1030" r="5" class="box"/>
+<text x="1056" y="1035" text-anchor="end" class="s">7</text>
+<text x="1070" y="1035" class="m">line, 3.4 V</text>
+<text x="222" y="1115" text-anchor="end">GPIO26 · pin 37</text>
+<path class="w" d="M230 1110 H330"/>
+<rect x="330" y="1088" width="370" height="44" class="box"/>
+<text x="346" y="1115" class="b">ch 8 · GPIO 26 · HD6 pin 8 · orange</text>
+<circle cx="680" cy="1110" r="7" fill="#f08a1c" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="1097" class="s">4</text><text x="704" y="1133" class="s">3</text>
+<path class="w" d="M700 1120 H790"/><circle class="dot" cx="790" cy="1120" r="4"/>
+<path class="w" d="M700 1100 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="1100" r="5" class="box"/>
+<text x="1056" y="1105" text-anchor="end" class="s">8</text>
+<text x="1070" y="1105" class="m">line, 3.4 V</text>
+<text x="222" y="1185" text-anchor="end">GPIO12 · pin 32</text>
+<path class="w" d="M230 1180 H330"/>
+<rect x="330" y="1158" width="370" height="44" class="box"/>
+<text x="346" y="1185" class="b">ch 9 · GPIO 12 · HD6 pin 9 · red</text>
+<circle cx="680" cy="1180" r="7" fill="#d42a2a" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="1167" class="s">4</text><text x="704" y="1203" class="s">3</text>
+<path class="w" d="M700 1190 H790"/><circle class="dot" cx="790" cy="1190" r="4"/>
+<path class="w" d="M700 1170 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="1170" r="5" class="box"/>
+<text x="1056" y="1175" text-anchor="end" class="s">9</text>
+<text x="1070" y="1175" class="m">line, 3.4 V</text>
+<text x="222" y="1255" text-anchor="end">GPIO13 · pin 33</text>
+<path class="w" d="M230 1250 H330"/>
+<rect x="330" y="1228" width="370" height="44" class="box"/>
+<text x="346" y="1255" class="b">ch 10 · GPIO 13 · HD6 pin 10 · brown</text>
+<circle cx="680" cy="1250" r="7" fill="#7a4a1e" stroke="#000" stroke-width="1.5"/>
+<text x="704" y="1237" class="s">4</text><text x="704" y="1273" class="s">3</text>
+<path class="w" d="M700 1260 H790"/><circle class="dot" cx="790" cy="1260" r="4"/>
+<path class="w" d="M700 1240 H782 a8 8 0 0 1 16 0 H1000"/>
+<circle cx="1024" cy="1240" r="5" class="box"/>
+<text x="1056" y="1245" text-anchor="end" class="s">10</text>
+<text x="1070" y="1245" class="b">GND (console)</text>
+<path class="w" style="stroke-width:4" d="M790 630 V1260"/>
+<text x="802" y="1290" class="b">SHARED line (S rail)</text>
+<text x="802" y="1306" class="m">all pin-3 sides; on the board only</text>
+<text x="880" y="600" text-anchor="middle" class="m">pin-4 sides → HD6 1–10</text>
+<rect x="40" y="1326" width="1120" height="62" fill="#f4f4f4" stroke="#000" stroke-width="1"/>
+<text x="56" y="1350" class="b">Command = close select relays (e.g. 2+7) → 50 ms → close relay 1 (Go, pin 1 = console ground) for 300 ms → release</text>
+<text x="56" y="1372" class="m">Go joins the SHARED line to console ground, which grounds the selected lines = one button press. Go is released first, then all. Command map: docs/hardware/button-map.md</text>
+<rect x="640" y="1410" width="520" height="104" class="box"/>
+<path d="M640 1444 H1160" stroke="#000" stroke-width="1"/>
+<text x="656" y="1433" class="h">Treadmill controller v1.0 — relay board</text>
+<text x="656" y="1464" class="s">Tested: NordicTrack C2100 (NTL1085) · Raspberry Pi Zero W Rev 1.1</text>
+<text x="656" y="1482" class="s">Relays: Panasonic AQY212EH (alt. TLP240A) · 2026-11-14 · hardware/schematic.svg</text>
+<text x="656" y="1502" class="s">© 2026 endoergic · licensed CC BY 4.0 (creativecommons.org/licenses/by/4.0)</text>
+</svg>

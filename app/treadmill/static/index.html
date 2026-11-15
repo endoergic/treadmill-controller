@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111">
+  <title>Treadmill</title>
+  <link rel="stylesheet" href="style.css?v=2"><!-- ?v: escapes copies cached before no-cache; bump only if stale again -->
+</head>
+<body>
+  <header>
+    <span id="conn" class="conn off">connecting…</span>
+    <span id="clients"></span>
+  </header>
+
+  <main>
+    <section class="speed">
+      <div><span id="speed">–</span> <span id="unit"></span></div>
+      <small>estimated · max <span id="max"></span></small>
+      <small id="busy">&nbsp;</small>
+    </section>
+
+    <section class="pad">
+      <button id="down" class="big" data-command="speed_down">−</button>
+      <button id="up" class="big" data-command="speed_up">+</button>
+    </section>
+
+    <section class="pair">
+      <button id="start" class="start" data-command="start" hidden>START</button>
+      <button id="stop" class="stop" data-command="stop" hidden>STOP</button>
+    </section>
+    <p id="no-stop" class="warn" hidden>To stop: pull the <b>safety key</b>.</p>
+
+    <section id="presets-box" hidden>
+      <h2>Speed</h2>
+      <div id="presets" class="presets"></div>
+    </section>
+
+    <section id="incline-box" hidden>
+      <h2>Incline</h2>
+      <div class="pair">
+        <button id="incline-down" data-command="incline_down">▼ down</button>
+        <button id="incline-up" data-command="incline_up">▲ up</button>
+      </div>
+    </section>
+
+    <section id="extra" class="extra"></section>
+
+    <button id="reset" class="reset">Belt stopped · set speed to 0</button>
+  </main>
+
+  <!-- Troubleshooting panel. Hidden: open it by tapping "connected" 5 times, or with #manual in the URL. -->
+  <section id="manual" class="manual" hidden>
+    <div class="manual-head">
+      <h2>Manual signals</h2>
+      <button id="manual-close" class="close" aria-label="Close">✕</button>
+    </div>
+    <p class="note">Closes the lines you pick, then taps Go for the hold time. Nobody on the belt, hand on the
+      safety key. Doesn't change the speed estimate.</p>
+
+    <h3>Lines</h3>
+    <div id="m-lines" class="chips"></div>
+    <h3>Go</h3>
+    <div id="m-go" class="chips"></div>
+    <h3>Hold</h3>
+    <div class="hold">
+      <input id="m-ms" type="number" inputmode="numeric" min="1" step="50"> <span>ms</span>
+      <button data-ms="300">300</button><button data-ms="1000">1000</button><button data-ms="3000">3000</button>
+    </div>
+
+    <button id="m-press" class="m-press">Press</button>
+    <p id="m-summary" class="note"></p>
+
+    <h3>Recent</h3>
+    <div id="m-recent" class="recent"></div>
+  </section>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js?v=2"></script>
+</body>
+</html>

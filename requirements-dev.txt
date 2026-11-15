@@ -1,0 +1,8 @@
+# Laptop development and tests. These pins mirror the apt package versions on the Pi
+# (Raspberry Pi OS 13 "trixie"), which deploy/install.sh installs; the Pi itself doesn't use this file.
+# lgpio is Pi-only and not needed here: tests use gpiozero's mock pin factory.
+gpiozero==2.0.1
+starlette==0.46.1
+uvicorn==0.32.0
+websockets==15.0.1
+pytest>=8
