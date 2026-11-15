@@ -1,5 +1,9 @@
 # Treadmill Controller
 
+[![tests](https://github.com/endoergic/treadmill-controller/actions/workflows/tests.yml/badge.svg)](https://github.com/endoergic/treadmill-controller/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![Docs: CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-docs.md)
+
 A Raspberry Pi Zero W that "presses" a treadmill console's keypad buttons, so any phone on the home Wi‑Fi can
 control the treadmill from a small web page. It was built for a NordicTrack C2100 whose keypad stopped working:
 instead of replacing the console, ten PhotoMOS relays are wired to the console's 10‑pin keypad connector (HD6) and
@@ -127,6 +131,7 @@ Do these in order:
 
 ```
 treadmill-controller/
+├── .github/                    # CI (tests on every push), compatibility-report issue form
 ├── README.md
 ├── CHANGELOG.md
 ├── LICENSE                     # MIT (code)
@@ -217,5 +222,8 @@ Full list: [CHANGELOG.md](CHANGELOG.md).
 
 ## Status
 
-**v1.0.0**, the first public release. All mapped commands were confirmed on the tested treadmill on 2026-11-14.
-See [CHANGELOG.md](CHANGELOG.md).
+**v1.0.1**. All mapped commands were confirmed on the tested treadmill on 2026-11-14. See [CHANGELOG.md](CHANGELOG.md).
+
+Got it working (or not) on another treadmill? Please file a
+[compatibility report](https://github.com/endoergic/treadmill-controller/issues/new?template=compatibility.yml).
+Build questions go to [Discussions](https://github.com/endoergic/treadmill-controller/discussions).

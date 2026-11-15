@@ -4,12 +4,17 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.0.1] - 2026-11-14
+
+Docs and project infrastructure only; no code changes.
 
 ### Added
 
 - Build photos (metadata stripped): console, finished relay board, HD6 before/after, ribbon plug; shown in the
   README and the breadboard build guide.
+- GitHub Actions workflow running the tests on every push and pull request (Python 3.13, like the Pi), with a README
+  badge.
+- "My treadmill" issue form for compatibility reports; GitHub Discussions for build questions.
 
 ### Changed
 
@@ -71,4 +76,5 @@ First public release.
 - Printable measure sheet.
 - LED light-show layout picture.
 
+[1.0.1]: https://github.com/endoergic/treadmill-controller/releases/tag/v1.0.1
 [1.0.0]: https://github.com/endoergic/treadmill-controller/releases/tag/v1.0.0

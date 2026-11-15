@@ -1,0 +1,62 @@
+name: My treadmill (compatibility report)
+description: Tell us whether this works on your treadmill, or what you found while trying.
+title: "[Compatibility] <brand> <model>"
+labels: ["compatibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Every report helps the next person with the same treadmill.
+        **Safety first:** only measure on the console / keypad side, with the treadmill unplugged unless a step says otherwise. Never open or probe the motor controller.
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Works (buttons pressed from the app)
+        - Partly works (some buttons)
+        - Doesn't work
+        - Not built yet (asking before I start)
+    validations:
+      required: true
+  - type: input
+    id: treadmill
+    attributes:
+      label: Treadmill brand and model number
+      description: From the sticker on the frame, e.g. NordicTrack C2100, model NTL1085.
+    validations:
+      required: true
+  - type: input
+    id: console
+    attributes:
+      label: Console name
+      description: Printed on the console, e.g. Solaris.
+  - type: input
+    id: controller
+    attributes:
+      label: Motor controller
+      description: e.g. MC-2100WA (label on the controller board; read it, don't touch it).
+  - type: textarea
+    id: connector
+    attributes:
+      label: Keypad connector
+      description: Name on the board (e.g. HD6), number of pins, socket type, photo if you can (strip location data first).
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements
+      description: |
+        As in docs/hardware/rewiring-guide.md §2. Unplugged: each pin → plug ground prong and → live/neutral (Ω or OL). Powered, key in: DC volts of each pin vs the ground pin.
+      placeholder: |
+        Unplugged: pins 1,10 → ground prong 111 Ω; others OL; all → live/neutral OL
+        Powered: pins 2–9 = +3.4 V vs pin 1
+  - type: textarea
+    id: commands
+    attributes:
+      label: Button map
+      description: Which line combinations do what (from scripts/probe.py; attach docs/hardware/discovery-log.csv if you have it).
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Differences from the documented build, problems, fixes.
